@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Resource.black,
+      backgroundColor: Colors.black,
       floatingActionButton: isFAB ? buildFAB() : buildExtendedFAB(),
       body: CustomScrollView(
         controller: _scrollController,
@@ -81,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
             automaticallyImplyLeading: false,
-            backgroundColor: Resource.black,
+            backgroundColor: Colors.black,
             bottom: PreferredSize(
               preferredSize: Size(MediaQuery.of(context).size.width, 50),
               child: Container(
@@ -233,6 +233,25 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           )
         ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.slideshow),
+            label: 'Coming Soon',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.download_for_offline_outlined),
+            label: 'Downloads',
+          ),
+        ],
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.grey,
+        backgroundColor: Resource.black,
       ),
     );
   }
