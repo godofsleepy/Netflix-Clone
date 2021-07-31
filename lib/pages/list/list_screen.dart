@@ -1,22 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone/pages/list/list_screen.dart';
 import 'package:netflix_clone/utils/resource.dart';
 
-class HomeScreen extends StatefulWidget {
-  HomeScreen({Key? key}) : super(key: key);
+class ListScreen extends StatefulWidget {
+  ListScreen({Key? key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _ListScreenState createState() => _ListScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _ListScreenState extends State<ListScreen> {
   ScrollController _scrollController = ScrollController();
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,16 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
             floating: true,
             snap: false,
             pinned: true,
-            leading: FittedBox(
-              fit: BoxFit.cover,
-              child: IconButton(
-                onPressed: null,
-                icon: Image.asset(
-                  "assets/netflix-logo.png",
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
+            title: Text("TV Shows"),
             actions: [
               IconButton(
                 splashRadius: 20,
@@ -58,7 +42,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ],
-            automaticallyImplyLeading: false,
             backgroundColor: Resource.black.withOpacity(0.5),
             bottom: PreferredSize(
               preferredSize: Size(MediaQuery.of(context).size.width, 50),
@@ -69,37 +52,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => ListScreen()));
-                      },
-                      child: Hero(
-                        tag: "TV Shows",
-                        child: Material(
-                          type: MaterialType.transparency,
-                          child: Text(
-                            "TV Shows",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                            ),
+                    Hero(
+                      tag: "TV Shows",
+                      child: Material(
+                        type: MaterialType.transparency,
+                        child: Text(
+                          "TV Shows",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
                           ),
                         ),
-                      ),
-                    ),
-                    Text(
-                      "Movies",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
-                    ),
-                    Text(
-                      "My List",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
                       ),
                     ),
                   ],
