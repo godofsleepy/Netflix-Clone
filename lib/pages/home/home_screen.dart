@@ -12,15 +12,35 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   ScrollController _scrollController = ScrollController();
 
+  bool isFAB = false;
+
   @override
   void initState() {
     super.initState();
+    _scrollController.addListener(() {
+      if (_scrollController.offset > 50) {
+        setState(() {
+          isFAB = true;
+        });
+      } else {
+        setState(() {
+          isFAB = false;
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _scrollController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Resource.black,
+      floatingActionButton: isFAB ? buildFAB() : buildExtendedFAB(),
       body: CustomScrollView(
         controller: _scrollController,
         slivers: [
@@ -69,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    GestureDetector(
+                    InkWell(
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (_) => ListScreen()));
@@ -107,18 +127,51 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return ListTile(
-                  title: Text('Item $index'),
-                );
-              },
-              childCount: 30,
+          SliverFillRemaining(
+            child: Column(
+              children: [],
             ),
-          ),
+          )
         ],
       ),
     );
   }
+
+  Widget buildFAB() => AnimatedContainer(
+        duration: Duration(milliseconds: 200),
+        curve: Curves.linear,
+        width: 50,
+        height: 50,
+        child: FloatingActionButton(
+          backgroundColor: Colors.white,
+          foregroundColor: Resource.redAccent,
+          onPressed: () {},
+          child: Icon(Icons.shuffle),
+        ),
+      );
+
+  Widget buildExtendedFAB() => AnimatedContainer(
+        duration: Duration(milliseconds: 100),
+        curve: Curves.linear,
+        width: 190,
+        height: 50,
+        child: FloatingActionButton.extended(
+          backgroundColor: Colors.white,
+          onPressed: () {},
+          icon: Icon(
+            Icons.shuffle,
+            color: Resource.redAccent,
+          ),
+          label: Center(
+            child: Text(
+              "Play Something",
+              style: TextStyle(
+                fontSize: 15,
+                color: Resource.black,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+      );
 }
