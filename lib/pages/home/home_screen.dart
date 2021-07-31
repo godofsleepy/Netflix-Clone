@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:netflix_clone/pages/list/list_screen.dart';
 import 'package:netflix_clone/utils/resource.dart';
 
@@ -48,6 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
             floating: true,
             snap: false,
             pinned: true,
+            brightness: Brightness.dark,
             leading: FittedBox(
               fit: BoxFit.cover,
               child: IconButton(
@@ -79,13 +81,12 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
             automaticallyImplyLeading: false,
-            backgroundColor: Resource.black.withOpacity(0.5),
+            backgroundColor: Resource.black,
             bottom: PreferredSize(
               preferredSize: Size(MediaQuery.of(context).size.width, 50),
               child: Container(
                 height: 50,
                 width: MediaQuery.of(context).size.width,
-                color: Resource.black.withOpacity(0.5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -128,8 +129,107 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           SliverFillRemaining(
-            child: Column(
-              children: [],
+            child: Padding(
+              padding: EdgeInsets.all(8),
+              child: Column(
+                children: [
+                  Column(
+                    children: [
+                      Container(
+                        height: 300,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(4),
+                          child: Image.network(
+                            "https://image.tmdb.org/t/p/w500/5bFK5d3mVTAvBCXi5NPWH0tYjKl.jpg",
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 40),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 10,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              "Exciting",
+                              style: TextStyle(fontSize: 13),
+                            ),
+                            Text(
+                              "•",
+                              style: TextStyle(color: Colors.grey),
+                            ),
+                            Text(
+                              "Sports",
+                              style: TextStyle(fontSize: 13),
+                            ),
+                            Text(
+                              "•",
+                              style: TextStyle(color: Colors.grey),
+                            ),
+                            Text("TV"),
+                            Text(
+                              "•",
+                              style: TextStyle(color: Colors.grey),
+                            ),
+                            Text(
+                              "Animation",
+                              style: TextStyle(fontSize: 13),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              primary: Colors.white,
+                            ),
+                            onPressed: () {},
+                            child: Column(
+                              children: [
+                                Icon(Icons.add),
+                                Text("My List"),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            width: 90,
+                            child: TextButton.icon(
+                              style: TextButton.styleFrom(
+                                primary: Resource.black,
+                                backgroundColor: Colors.white,
+                              ),
+                              onPressed: () {},
+                              label: Text(
+                                "Play",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              icon: Icon(Icons.play_arrow),
+                            ),
+                          ),
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              primary: Colors.white,
+                            ),
+                            onPressed: () {},
+                            child: Column(
+                              children: [
+                                Icon(Icons.info_outline),
+                                Text("Info"),
+                              ],
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ],
+              ),
             ),
           )
         ],
