@@ -5,4 +5,20 @@ class Resource {
   static const Color redAccent = Color(0xffe50914);
   static const Color red = Color(0xffb81d24);
   static const Color white = Color(0xfff5f5f1);
+
+  static const String baseUrl = "https://image.tmdb.org/t/p/w500";
+
+  static const List<String> populer = [
+    "/qAZ0pzat24kLdO3o8ejmbLxyOac.jpg",
+    "/bOFaAXmWWXC3Rbv4u4uM9ZSzRXP.jpg",
+    "/uHA5COgDzcxjpYSHHulrKVl6ByL.jpg",
+    "/5dExO5G2iaaTxYnLIFKLWofDzyI.jpg",
+  ];
+
+  static const List<String> myList = [
+    "/jTswp6KyDYKtvC52GbHagrZbGvD.jpg",
+    "/34nDCQZwaEvsy4CFO5hkGRFDCVU.jpg",
+    "/niw2AKHz6XmwiRMLWaoyAOAti0G.jpg",
+    "/uoTPjx07dxTrC1g3dYeaS2WNVGL.jpg",
+  ];
 }

@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      floatingActionButton: isFAB ? buildFAB() : buildExtendedFAB(),
+      floatingActionButton: isFAB ? _buildFAB() : _buildExtendedFAB(),
       body: CustomScrollView(
         controller: _scrollController,
         slivers: [
@@ -128,105 +128,186 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          SliverFillRemaining(
+          SliverToBoxAdapter(
             child: Padding(
-              padding: EdgeInsets.all(8),
+              padding: EdgeInsets.symmetric(vertical: 8),
               child: Column(
                 children: [
-                  Column(
-                    children: [
-                      Container(
-                        height: 300,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(4),
-                          child: Image.network(
-                            "https://image.tmdb.org/t/p/w500/5bFK5d3mVTAvBCXi5NPWH0tYjKl.jpg",
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 300,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(4),
+                            child: Image.network(
+                              "${Resource.baseUrl}/5bFK5d3mVTAvBCXi5NPWH0tYjKl.jpg",
+                            ),
                           ),
                         ),
-                      ),
-                      SizedBox(height: 40),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 10,
+                        SizedBox(height: 40),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 10,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                "Exciting",
+                                style: TextStyle(fontSize: 13),
+                              ),
+                              Text(
+                                "•",
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                              Text(
+                                "Sports",
+                                style: TextStyle(fontSize: 13),
+                              ),
+                              Text(
+                                "•",
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                              Text("TV"),
+                              Text(
+                                "•",
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                              Text(
+                                "Animation",
+                                style: TextStyle(fontSize: 13),
+                              ),
+                            ],
+                          ),
                         ),
-                        child: Row(
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Text(
-                              "Exciting",
-                              style: TextStyle(fontSize: 13),
-                            ),
-                            Text(
-                              "•",
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                            Text(
-                              "Sports",
-                              style: TextStyle(fontSize: 13),
-                            ),
-                            Text(
-                              "•",
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                            Text("TV"),
-                            Text(
-                              "•",
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                            Text(
-                              "Animation",
-                              style: TextStyle(fontSize: 13),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          TextButton(
-                            style: TextButton.styleFrom(
-                              primary: Colors.white,
-                            ),
-                            onPressed: () {},
-                            child: Column(
-                              children: [
-                                Icon(Icons.add),
-                                Text("My List"),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            width: 90,
-                            child: TextButton.icon(
+                            TextButton(
                               style: TextButton.styleFrom(
-                                primary: Resource.black,
-                                backgroundColor: Colors.white,
+                                primary: Colors.white,
                               ),
                               onPressed: () {},
-                              label: Text(
-                                "Play",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
+                              child: Column(
+                                children: [
+                                  Icon(Icons.add),
+                                  Text("My List"),
+                                ],
                               ),
-                              icon: Icon(Icons.play_arrow),
+                            ),
+                            Container(
+                              width: 90,
+                              child: TextButton.icon(
+                                style: TextButton.styleFrom(
+                                  primary: Resource.black,
+                                  backgroundColor: Colors.white,
+                                ),
+                                onPressed: () {},
+                                label: Text(
+                                  "Play",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                icon: Icon(Icons.play_arrow),
+                              ),
+                            ),
+                            TextButton(
+                              style: TextButton.styleFrom(
+                                primary: Colors.white,
+                              ),
+                              onPressed: () {},
+                              child: Column(
+                                children: [
+                                  Icon(Icons.info_outline),
+                                  Text("Info"),
+                                ],
+                              ),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 30),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: Text(
+                            "Popular on Netflix",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
                             ),
                           ),
-                          TextButton(
-                            style: TextButton.styleFrom(
-                              primary: Colors.white,
+                        ),
+                        SizedBox(height: 12),
+                        Container(
+                          height: 170,
+                          child: ListView.separated(
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: Resource.populer.length,
+                            padding: EdgeInsets.only(right: 30),
+                            itemBuilder: (context, index) {
+                              return ClipRRect(
+                                borderRadius: BorderRadius.circular(4),
+                                child: Image.network(
+                                    "${Resource.baseUrl}${Resource.populer[index]}"),
+                              );
+                            },
+                            separatorBuilder: (context, index) {
+                              return SizedBox(width: 8);
+                            },
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: Text(
+                            "My List",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
                             ),
-                            onPressed: () {},
-                            child: Column(
-                              children: [
-                                Icon(Icons.info_outline),
-                                Text("Info"),
-                              ],
-                            ),
-                          )
-                        ],
-                      )
-                    ],
+                          ),
+                        ),
+                        SizedBox(height: 12),
+                        Container(
+                          height: 170,
+                          child: ListView.separated(
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: Resource.populer.length,
+                            padding: EdgeInsets.only(right: 30),
+                            itemBuilder: (context, index) {
+                              return ClipRRect(
+                                borderRadius: BorderRadius.circular(4),
+                                child: Image.network(
+                                    "${Resource.baseUrl}${Resource.myList[index]}"),
+                              );
+                            },
+                            separatorBuilder: (context, index) {
+                              return SizedBox(width: 8);
+                            },
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -256,7 +337,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget buildFAB() => AnimatedContainer(
+  Widget _buildFAB() => AnimatedContainer(
         duration: Duration(milliseconds: 200),
         curve: Curves.linear,
         width: 50,
@@ -269,7 +350,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       );
 
-  Widget buildExtendedFAB() => AnimatedContainer(
+  Widget _buildExtendedFAB() => AnimatedContainer(
         duration: Duration(milliseconds: 100),
         curve: Curves.linear,
         width: 190,

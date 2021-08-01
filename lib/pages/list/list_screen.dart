@@ -49,8 +49,9 @@ class _ListScreenState extends State<ListScreen> {
                 height: 50,
                 width: MediaQuery.of(context).size.width,
                 color: Resource.black.withOpacity(0.5),
+                padding: EdgeInsets.symmetric(horizontal: 8),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Hero(
                       tag: "TV Shows",
