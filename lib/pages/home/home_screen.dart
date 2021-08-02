@@ -74,9 +74,12 @@ class _HomeScreenState extends State<HomeScreen> {
               IconButton(
                 onPressed: () {},
                 splashRadius: 24,
-                icon: Image.network(
-                  "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png",
-                  height: 35,
+                icon: ClipRRect(
+                  borderRadius: BorderRadius.circular(4),
+                  child: Image.network(
+                    "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png",
+                    height: 35,
+                  ),
                 ),
               ),
             ],
