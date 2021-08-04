@@ -13,7 +13,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   ScrollController _scrollController = ScrollController();
 
-  bool isFAB = false;
+  bool isMini = false;
 
   @override
   void initState() {
@@ -21,27 +21,21 @@ class _HomeScreenState extends State<HomeScreen> {
     _scrollController.addListener(() {
       if (_scrollController.offset > 50) {
         setState(() {
-          isFAB = true;
+          isMini = true;
         });
       } else {
         setState(() {
-          isFAB = false;
+          isMini = false;
         });
       }
     });
   }
 
   @override
-  void dispose() {
-    super.dispose();
-    _scrollController.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      floatingActionButton: isFAB ? _buildFAB() : _buildExtendedFAB(),
+      floatingActionButton: isMini ? _buildFAB() : _buildExtendedFAB(),
       body: CustomScrollView(
         controller: _scrollController,
         slivers: [

@@ -11,6 +11,7 @@ class Resource {
       "https://pngimg.com/uploads/netflix/netflix_PNG15.png";
   static const String avatarLogo =
       "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png";
+  static const String headerImage = "/5bFK5d3mVTAvBCXi5NPWH0tYjKl.jpg";
 
   static const List<String> populer = [
     "/qAZ0pzat24kLdO3o8ejmbLxyOac.jpg",
