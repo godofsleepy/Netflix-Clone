@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:netflix_clone/pages/list/list_screen.dart';
+import 'package:netflix_clone/screens/list/list_screen.dart';
 import 'package:netflix_clone/utils/resource.dart';
 
 class HomeScreen extends StatefulWidget {

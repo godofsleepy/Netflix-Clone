@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:netflix_clone/pages/home/home_screen.dart';
+import 'package:netflix_clone/screens/home/home_screen.dart';
 import 'package:netflix_clone/utils/resource.dart';
 
 void main() {
