@@ -7,6 +7,10 @@ class Resource {
   static const Color white = Color(0xfff5f5f1);
 
   static const String baseUrl = "https://image.tmdb.org/t/p/w500";
+  static const String netflixLogo =
+      "https://pngimg.com/uploads/netflix/netflix_PNG15.png";
+  static const String avatarLogo =
+      "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png";
 
   static const List<String> populer = [
     "/qAZ0pzat24kLdO3o8ejmbLxyOac.jpg",

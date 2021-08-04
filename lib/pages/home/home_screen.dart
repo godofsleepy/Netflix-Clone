@@ -54,8 +54,8 @@ class _HomeScreenState extends State<HomeScreen> {
               fit: BoxFit.cover,
               child: IconButton(
                 onPressed: null,
-                icon: Image.asset(
-                  "assets/netflix-logo.png",
+                icon: Image.network(
+                  Resource.netflixLogo,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 icon: ClipRRect(
                   borderRadius: BorderRadius.circular(4),
                   child: Image.network(
-                    "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png",
+                    Resource.avatarLogo,
                     height: 35,
                   ),
                 ),
